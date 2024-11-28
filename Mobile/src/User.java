@@ -1,4 +1,4 @@
-public class User extends Seller{
+public class User extends Seller implements Commenter{
     private final int sellerID;
     private String userName;
     private String dateJoined;

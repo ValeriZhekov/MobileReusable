@@ -19,7 +19,6 @@ public class Dealer extends Seller{
         this.password=password;
         this.address=address;
     }
-
     public String getName() {
         return name;
     }
