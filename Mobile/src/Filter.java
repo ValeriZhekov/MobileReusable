@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Filter<T> {
-    private Specification<T> specification;
+    private final Specification<T> specification;
     Filter(Specification<T> spec)
     {
         this.specification=spec;

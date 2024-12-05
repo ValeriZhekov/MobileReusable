@@ -1,5 +1,5 @@
 public class ModelSpecification implements Specification<Car>{
-    private String model;
+    private final String model;
     public ModelSpecification(String model)
     {
         this.model=model;
