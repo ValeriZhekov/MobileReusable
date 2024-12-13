@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class Listing {
+public class Listing<T extends Product> {
     private final int listingID;
-    private final Product product;
+    private final T product;
     private final Seller seller;
     private double price;
     private final String date;
     ArrayList<ListingComment> comments;
-    public Listing(int listingID,Product product,Seller seller,double price,String date){
+    public Listing(int listingID,T product,Seller seller,double price,String date){
         this.listingID=listingID;
         this.product=product;
         this.price=price;
@@ -40,7 +40,7 @@ public class Listing {
         return seller;
     }
 
-    public Product getProduct() {
+    public T getProduct() {
         return product;
     }
 
