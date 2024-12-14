@@ -1,3 +1,5 @@
+package Users;
+
 public class Guest {
     private String ip;
     Guest(String ip)

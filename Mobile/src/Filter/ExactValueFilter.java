@@ -1,3 +1,5 @@
+package Filter;
+
 public class ExactValueFilter<T, V> implements Filter<T> {
     private final V valueToFind;
     private final FieldExtractor<T, V> fieldExtractor;

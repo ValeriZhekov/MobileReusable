@@ -1,19 +1,21 @@
+package Filter;
+
 import java.util.ArrayList;
 
-public class OrFilter<T> implements Filter<T> {
+public class AndFilter<T> implements Filter<T> {
     ArrayList<Filter<T>> filters;
-    OrFilter(ArrayList<Filter<T>> filters)
+    AndFilter(ArrayList<Filter<T>> filters)
     {
         this.filters=filters;
     }
     @Override
     public boolean matches(T item) {
-        boolean result=false;
+        boolean result=true;
         for (int i=0; i<filters.size(); i++)
         {
-            if (filters.get(i).matches(item))
+            if (!filters.get(i).matches(item))
             {
-                result=true;
+                result=false;
                 break;
             }
         }

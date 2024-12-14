@@ -1,4 +1,6 @@
-public class Dealer extends Seller{
+package Users;
+
+public class Dealer extends Seller {
     private final int sellerID;
     private String name;
     private String dateJoined;
@@ -9,10 +11,10 @@ public class Dealer extends Seller{
     public int getSellerID() {
         return this.sellerID;
     }
-    Dealer(String name,String dateJoined,String email,String password,String address)
+   public Dealer(String name,String dateJoined,String email,String password,String address)
     {
-        this.sellerID=currentID;
-        currentID++;
+        this.sellerID= Seller.currentID;
+        Seller.currentID++;
         this.name=name;
         this.dateJoined=dateJoined;
         this.email=email;

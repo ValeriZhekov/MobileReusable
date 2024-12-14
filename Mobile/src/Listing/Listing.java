@@ -1,3 +1,8 @@
+package Listing;
+
+import Users.Commenter;
+import Users.Seller;
+
 import java.util.ArrayList;
 
 public class Listing<T extends Product> {
@@ -15,7 +20,7 @@ public class Listing<T extends Product> {
         this.date=date;
         this.comments=new ArrayList<ListingComment>();
     }
-    public void addComment(Commenter commenter,String comment)
+    public void addComment(Commenter commenter, String comment)
     {
         comments.add(new ListingComment(commenter,comment));
     }

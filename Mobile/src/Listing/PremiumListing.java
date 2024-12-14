@@ -1,7 +1,11 @@
-public class PremiumListing extends Listing{
+package Listing;
+
+import Users.Seller;
+
+public class PremiumListing<T extends Product> extends Listing<T> {
     private int priority;
     private String dateOfExpiry;
-    PremiumListing(int listingID,Product product,Seller seller,double price,String date,int priority,String dateOfExpiry)
+    public PremiumListing(int listingID, T product, Seller seller, double price, String date, int priority, String dateOfExpiry)
     {
         super(listingID, product, seller, price, date);
         this.dateOfExpiry=dateOfExpiry;

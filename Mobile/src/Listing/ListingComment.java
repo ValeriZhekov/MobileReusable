@@ -1,3 +1,7 @@
+package Listing;
+
+import Users.Commenter;
+
 public class ListingComment {
     private final Commenter commenter;
     private final String comment;

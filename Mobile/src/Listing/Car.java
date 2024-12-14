@@ -1,4 +1,6 @@
-public abstract class Car extends Product{
+package Listing;
+
+public abstract class Car extends Product {
     protected final int year;
     protected final int month;
     private int km;

@@ -1,3 +1,5 @@
+package Filter;
+
 public class CaseInsensitiveFilter<T> implements Filter<T> {
     private final String valueToFind;
     private final FieldExtractor<T, String> fieldExtractor;

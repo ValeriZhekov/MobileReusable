@@ -1,4 +1,6 @@
-public class User extends Seller implements Commenter{
+package Users;
+
+public class User extends Seller implements Commenter {
     private final int sellerID;
     private String userName;
     private String dateJoined;
@@ -10,8 +12,8 @@ public class User extends Seller implements Commenter{
     }
     public User(String userName,String dateJoined,String password,String email,String birthDate)
     {
-        this.sellerID=currentID;
-        currentID++;
+        this.sellerID= Seller.currentID;
+        Seller.currentID++;
         this.userName=userName;
         this.dateJoined=dateJoined;
         this.password=password;
