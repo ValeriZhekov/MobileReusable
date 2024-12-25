@@ -87,11 +87,55 @@ public class CarListingSearcher implements Searcher<Car>{
                                 ((LiteralFilter<Integer>) valueFilter).getLiteralValue()));
                     }
 
-                } else {
+                }
+                else {
                     throw new IllegalArgumentException("Invalid query structure.");
                 }
             }
+            else if (token.equals("<"))
+            {
+                Filter<Listing<Car>> valueFilter = filterStack.pop();
+                Filter<Listing<Car>> fieldFilter = filterStack.pop();
+
+                if (valueFilter instanceof LiteralFilter<?> && fieldFilter instanceof PlaceholderFilter) {
+                    String fieldName = ((PlaceholderFilter) fieldFilter).getFieldName();
+                     if (fieldName.equals("year")) {
+                        filterStack.push(new RangeFilter<Listing<Car>, Integer>(l -> l.getProduct().getYear(),
+                                Integer.MIN_VALUE,((LiteralFilter<Integer>) valueFilter).getLiteralValue()));
+                    } else if (fieldName.equals("km")) {
+                         filterStack.push(new RangeFilter<Listing<Car>, Integer>(l -> l.getProduct().getKm(),
+                                 Integer.MIN_VALUE,((LiteralFilter<Integer>) valueFilter).getLiteralValue()));
+                    }
+
+                }
+                else {
+                    throw new IllegalArgumentException("Invalid query structure.");
+                }
+
+            }
+            else if (token.equals(">"))
+            {
+                Filter<Listing<Car>> valueFilter = filterStack.pop();
+                Filter<Listing<Car>> fieldFilter = filterStack.pop();
+
+                if (valueFilter instanceof LiteralFilter<?> && fieldFilter instanceof PlaceholderFilter) {
+                    String fieldName = ((PlaceholderFilter) fieldFilter).getFieldName();
+                    if (fieldName.equals("year")) {
+                        filterStack.push(new RangeFilter<Listing<Car>, Integer>(l -> l.getProduct().getYear(),
+                                ((LiteralFilter<Integer>) valueFilter).getLiteralValue(),Integer.MAX_VALUE));
+                    } else if (fieldName.equals("km")) {
+                        filterStack.push(new RangeFilter<Listing<Car>, Integer>(l -> l.getProduct().getKm(),
+                                ((LiteralFilter<Integer>) valueFilter).getLiteralValue(),Integer.MAX_VALUE));
+                    }
+
+                }
+                else {
+                    throw new IllegalArgumentException("Invalid query structure.");
+                }
+
+            }
         }
+
         if (filterStack.size() != 1) {
             throw new IllegalArgumentException("Malformed query.");
         }

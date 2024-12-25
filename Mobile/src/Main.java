@@ -28,7 +28,7 @@ public class Main {
     cars.add(tesla);
         QueryParser p=new QueryParser();
         CarListingSearcher s=new CarListingSearcher();
-        cars=s.search(cars,"km = 125250 | km = 253000");
+        cars=s.search(cars,"model = 'Civic' & km > 220000 & km < 230000");
         for (int i=0; i<cars.size(); i++)
             System.out.println(cars.get(i).getProduct().getName());
     }
