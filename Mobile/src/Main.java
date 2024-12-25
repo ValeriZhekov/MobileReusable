@@ -17,15 +17,19 @@ public class Main {
         Listing<Car> honda1=new Listing(12,hondaCivic1,kiko,21000,"12.12.2023"),
                 honda2=new Listing(123,hondaCivic2,kiko,11000,"12.12.2023"),
         tesla=new PremiumListing(231231,tesla3,nik,45000,"12.11.2023",23,"12.11.2024");
-        ArrayList<Car> cars=new ArrayList<>(),filtered;
-        cars.add(hondaCivic1);
-        cars.add(tesla3);
-        cars.add(hondaCivic2);
+        ArrayList<Listing<Car>> cars=new ArrayList<>(),filtered;
+
         honda1.addComment(nik,"Mn zle civic-a");
 
         ExactValueFilter<Listing<Car>,String> hondaModel=new ExactValueFilter<Listing<Car>, String>(x -> x.getProduct().getModel(),"Honda");
         ExactValueFilter<Listing<Car>,String> teslaModel=new ExactValueFilter<Listing<Car>, String>(x -> x.getProduct().getModel(),"Tesla");
-
-
+    cars.add(honda1);
+    cars.add(honda2);
+    cars.add(tesla);
+        QueryParser p=new QueryParser();
+        CarListingSearcher s=new CarListingSearcher();
+        cars=s.search(cars,"km = 125250 | km = 253000");
+        for (int i=0; i<cars.size(); i++)
+            System.out.println(cars.get(i).getProduct().getName());
     }
 }
