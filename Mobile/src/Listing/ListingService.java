@@ -13,4 +13,8 @@ public class ListingService {
         listingStorage.addListing(listing);
         notificationService.onNewListingAdded(listing);
     }
+
+    public ListingStorage<Car> getListingStorage() {
+        return listingStorage;
+    }
 }
